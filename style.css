@@ -1,0 +1,7 @@
+\/* Custom styles for transaction list borders */
+.transaction-list-item.income {
+  border-left: 5px solid #10B981; /* Tailwind's emerald-500 */
+}
+.transaction-list-item.expense {
+  border-left: 5px solid #EF4444; /* Tailwind's red-500 */
+}

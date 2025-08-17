@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Najla's Smart Expense Tracker App</title>
+  <!-- Tailwind CSS CDN for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Font Awesome for the delete icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Link to the custom stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 font-sans p-4 md:p-8">
+
+  <!-- Main container with a clean card-like design -->
+  <div class="container mx-auto max-w-4xl bg-white p-6 md:p-10 rounded-xl shadow-lg">
+
+    <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center gap-2">
+      💰 Najla's Smart Expense Tracker App
+    </h1>
+
+    <!-- Balance Overview Section -->
+    <div class="balance text-center mb-8 bg-gray-50 p-6 rounded-lg border border-gray-200">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-lg md:text-xl font-medium">
+        <p class="text-green-600">Total Income: <span id="total-income">0</span> ₹</p>
+        <p class="text-red-600">Total Expense: <span id="total-expense">0</span> ₹</p>
+        <p class="text-blue-600">Balance: <span id="balance">0</span> ₹</p>
+      </div>
+    </div>
+
+    <!-- Add Transaction Form -->
+    <form id="transaction-form" class="flex flex-col md:flex-row flex-wrap gap-4 justify-center mb-8">
+      <input type="number" id="amount" placeholder="Amount" required
+             class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]">
+      <select id="type"
+              class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <input type="text" id="category" placeholder="Category" required
+             class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]">
+      <input type="date" id="date" required
+             class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]">
+      <input type="text" id="notes" placeholder="Notes (Optional)"
+             class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]">
+      <button type="submit"
+              class="w-full md:w-auto p-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        Add Transaction
+      </button>
+    </form>
+
+    <!-- Transaction History Section -->
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">📜 Transaction History</h2>
+    <ul id="transaction-list" class="space-y-3"></ul>
+
+    <!-- Charts Section -->
+    <div class="charts flex flex-col md:flex-row gap-8 justify-center mt-10">
+      <!-- Chart for expenses by category -->
+      <div class="w-full md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-inner">
+        <canvas id="expenseChart"></canvas>
+      </div>
+      <!-- Chart for income vs expense -->
+      <div class="w-full md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-inner">
+        <canvas id="incomeExpenseChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Export Button -->
+    <button id="exportBtn"
+            class="block mx-auto mt-8 p-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+      ⬇️ Export CSV
+    </button>
+  </div>
+
+  <!-- Link to the JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
